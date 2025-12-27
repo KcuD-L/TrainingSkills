@@ -1,4 +1,5 @@
 ﻿using Learning.Player;
+using Learning.UserDb;
 using Learning.WorkerAndJobs;
 
 namespace Learning
@@ -7,18 +8,25 @@ namespace Learning
     {
         static void Main(string[] args)
         {
-            //Worker worker = WorkerFactory.Create();
-            
-            /*
-            Hero Biba = new Hero(new BanditFactory());
-            Hero Boba = new Hero(new SuperKnight());
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                User user1 = new User { Name = "Екатерина", Email = "mail@mail.com", Password = "123"};
+                User user2 = new User { Name = "Балдун" };
 
-            Biba.Move();
-            Biba.Hit();
+                db.UpdateRange(user1, user2);
+                db.SaveChanges();
+            }
 
-            Boba.Move();
-            Boba.Hit();
-            */
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var users = db.Users.ToList();
+                Console.WriteLine("Users list:");
+
+                foreach (var user in users)
+                {
+                    Console.WriteLine($"{user.Id}.{user.Name} - email: {user.Email}     password: {user.Password}");
+                }
+            }
         }
     }
 }
