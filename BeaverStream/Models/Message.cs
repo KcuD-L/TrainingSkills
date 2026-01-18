@@ -14,10 +14,15 @@ namespace BeaverStream.Models
         [StringLength(200)]
         public string? ImageUrl { get; set; }
         public string? PosterIp { get; set; }
+        public int? parentMessageId { get; set; }
+        public Message? parentMessage { get; set; }
+        public List<Message> Replies { get; set; } = new();
 
 
         public int PostId { get; set; }
         public Post Post { get; set; } = null!;
+
+
 
     }
 }

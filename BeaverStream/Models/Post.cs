@@ -6,6 +6,8 @@ namespace BeaverStream.Models
     {
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        [StringLength(200)]
+        public required string Title { get; set; }
         [StringLength(500)]
         public required string MainText { get; set; }
         public List<Message>? MessageList { get; set; }
