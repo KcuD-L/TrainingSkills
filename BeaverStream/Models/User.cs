@@ -10,7 +10,6 @@
         public bool isAdmin { get; set; } = false;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public bool isAnon { get; set; }
 
         public List<Message>? Messages { get; set; }
 
