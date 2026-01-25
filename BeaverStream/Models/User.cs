@@ -1,9 +1,11 @@
-﻿namespace BeaverStream.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BeaverStream.Models
 {
     public class User
     {
         public int Id { get; set; }
-        public required string Name { get; set; }
+        [StringLength(50)] public required string Name { get; set; }
         public required string PasswordHash { get; set; }
         public bool isAdmin { get; set; } = false;
         public bool ReadOnly { get; set; } = false;

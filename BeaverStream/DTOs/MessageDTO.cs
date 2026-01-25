@@ -20,20 +20,25 @@ namespace BeaverStream.DTOs
         public required int ParentMessageId { get; set; }
     }
 
-    public class MessageBaseDto
+    public class MessagePreviewDto
     {
-        public int Id { get; set; }
-        public required string Text { get; set; }
+        
         public string? ImageUrl { get; set; }
-        public string? AuthorName { get; set; }
         public DateTime CreatedAt { get; set; }
+    }
+
+    public class MessageBaseDto : MessagePreviewDto
+    {
+        [StringLength(200)] public required string Title { get; set; }
+        public required string Text { get; set; }
+        public int Id { get; set; }
+        public string? AuthorName { get; set; }
         public bool IsOp { get; set; }
         public int? ParentMessageId { get; set; }
     }
 
     public class OpMessageDto : MessageBaseDto
     {
-        public required string Title { get; set; }
         public int ThreadId { get; set; }
         public string? ThreadTitle { get; set; }
     }
@@ -51,5 +56,12 @@ namespace BeaverStream.DTOs
         public string? UserName { get; set; }
         public DateTime? LastEdited { get; set; }
         public bool IsHidden { get; set; }
+    }
+    public class PagedResponse<T>
+    {
+        public List<T> Items { get; set; } = new();
+        public int PageNumber { get; set; }
+        public int TotalPages { get; set; }
+        public int TotalCount { get; set; }
     }
 }

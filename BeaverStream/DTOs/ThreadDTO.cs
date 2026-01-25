@@ -8,8 +8,7 @@ namespace BeaverStream.DTOs
 
     public class ThreadCreateDto
     {
-        [StringLength(200)]
-        public required string Title { get; set; }
+        [StringLength(200)] public required string Title { get; set; }
         public bool isHidden { get; set; }
     }
 
@@ -28,7 +27,7 @@ namespace BeaverStream.DTOs
     #endregion
 
     #region For Admin
-    public class ThreadAdminPreviewDTO : ThreadPreviewDto
+    public class ThreadAdminPreviewDto : ThreadPreviewDto
     {
         public bool isHidden { get; set; }
     }
